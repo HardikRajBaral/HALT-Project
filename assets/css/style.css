@@ -8,6 +8,8 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    position: absolute;
+    
   }
   *{
     text-decoration: none;
@@ -19,24 +21,22 @@ body {
     padding-right: 15px;
   }
 .navdiv{
-    width: 1451px;
-    height: 91px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-   
+    align-items: center;  
 }
+/*
 @font-face {
     font-family: 'Nico Moji';
-    src: url('/assets/fonts/NicoMoji-Regular.ttf') format('truetype'); /* Replace with the correct path to your font file */
+    src: url('/assets/fonts/NicoMoji-Regular.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 .logo h1{
     font-size: 26px;
     font-weight: 400;
-    font-family:'Nico Moji';
+    font-family:Nico Moji;
     line-height: 22px;
     text-align: center;
     margin-left: 59px;
@@ -55,16 +55,13 @@ li a{
     line-height: 22px;  
     font-weight: 800;
     font-family: Mulish;
-   margin-left: 59px;
+   margin-left: 40px;
 }
 .button{
     background-color: #FFDA32;
-    border-radius: 40px;
-    width: 140px;
-    height: 50px;
+    border-radius: 30px;
+padding: 10px 20px 10px 20px;
     color: #1C2B38;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 59px;
+    margin-left: 40px;
 
 }
