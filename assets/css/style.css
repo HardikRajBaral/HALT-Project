@@ -65,3 +65,17 @@ padding: 10px 20px 10px 20px;
     margin-left: 40px;
 
 }
+.footer{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.footer-container{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #424242;
+}
+p ,h6 ,address{
+    color: white;
+}
