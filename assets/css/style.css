@@ -96,6 +96,7 @@ p{
     font-size: 8px;
     margin: 4px;
     padding: 0;
+    text-align: left;
 }
 .footer-div{
     display: flex;
@@ -116,10 +117,16 @@ img{
     align-items: center;
     justify-content: center;
 }
+.footer-head{
+    text-align: left;
+    margin:auto;
+    padding: auto;
+}
 .head p{
     font-size: 14px;
     margin: 0;
     padding: 0;
+    text-align: left;
 }
 .links a{
     color: white;
