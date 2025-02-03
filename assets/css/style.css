@@ -9,14 +9,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
+  
     
   }
   *{
     text-decoration: none;
+    box-sizing: border-box;
   }
   .navbar{
     background-color: #424242;
@@ -72,31 +70,40 @@ padding: 10px 20px 10px 20px;
     margin-left: 40px;
 
 }
-
-.footer{
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+ 
+.footerPart{
     text-align: center;
     display: flex;
     align-items:center;
     justify-content: space-around;
-}
-.footer-container{
-    position:absolute;
+    background-color: #424242;
     bottom: 0;
     width: 100%;
     height: fit-content;
     background-color: #424242;
 }
-h6{
+.footerPart img{
+    height: 25px;
+    width: 25px;
+}
+
+.footerPart h6{
     color: white;
     margin-bottom: 6px;
     font-size: 12px;
 }
-p{
+.footerPart p{
     color: white;
     font-size: 8px;
     margin: 4px;
     padding: 0;
     text-align: left;
+    
 }
 .footer-div{
     display: flex;
@@ -107,10 +114,7 @@ p{
     padding: 0;
     width: fit-content;
 }
-img{
-    width: 24px;
-    height: 25px;
-}
+
 .links
 {
     display:flex;
@@ -135,6 +139,7 @@ img{
 .links a:hover{
     color: blue;
 }
+
 .main{
     display: flex;
     align-items: center;
