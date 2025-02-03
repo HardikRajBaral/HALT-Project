@@ -11,6 +11,11 @@ body {
     position: absolute;
    
   }
+  footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
   
 .footerPart{
     text-align: center;
@@ -18,7 +23,6 @@ body {
     align-items:center;
     justify-content: space-around;
     background-color: #424242;
-    bottom: 0;
     width: 100%;
     height: fit-content;
     background-color: #424242;
@@ -74,4 +78,57 @@ body {
 }
 .links a:hover{
     color: blue;
+}
+
+.wrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border:5px solid #424242;
+}
+.pokhara{
+    width: 600px;
+    height: 450px;
+    display: flex;
+    
+    
+
+}
+.ktm{
+    width: 600px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.pokhara{
+    width: 600px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.ktm img{
+    height: auto;
+    object-fit:cover;  
+    width: 100%;
+}
+.container img{
+    height: 100%;
+    width:50%;
+     
+    border-radius: 10px;
+}
+
+}
+p{
+    text-align: justify;
+}
+
+.ktm p{
+    text-align: justify;
 }
