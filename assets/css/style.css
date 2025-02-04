@@ -153,4 +153,9 @@ footer{
     padding: 18px 26px 18px 26px;
     border: solid #424242 ;
     border-radius: 45px;
+    color: white;
+}
+.Exploration:hover{
+    text-decoration: underline;
+    font-style: italic;
 }

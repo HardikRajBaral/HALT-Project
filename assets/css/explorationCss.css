@@ -1,4 +1,9 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    body {
     margin: 0;
     padding: 0;
     background-image: url(/assets/images/mainBG\ image.jpg);
@@ -9,7 +14,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-   
+   display: flex;
+   align-items: center;
+   justify-content: center;
   }
   footer{
     position: absolute;
@@ -80,49 +87,111 @@ body {
     color: blue;
 }
 
-.wrapper{
-    height: 100vh;
+
+
+/* Center the content on the page */
+.wrapper {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-.container{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: center; 
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+    
 }
 
-.ktm{
-    width: 300px;
-    height: 250px;
+/* Container for the two boxes */
+.container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-  
+    justify-content: space-around;
+    width: 100vw;
+    padding: 10px;
 }
-.pokhara{
-    width: 300px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-   
+.contain{
+    position: relative;
+    width: 320px;
+    height: 400px;
 }
-.ktm img{
-    height:100%;
-    object-fit:cover;  
-    width: 100%;
+
+/* Style for each box (ktm and pokhara) */
+.ktm, .pokhara {
+    flex: 1; /* Equal width for both boxes */
+    background-color: #e3e1e1; /* White background */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Ensure content stays within the box */
+    text-align: center; /* Center text and button */
+    padding: 1px;
+    max-width: 400px;
+    max-height:fit-content;
 }
-.container img{
-    height: 100%;
-    width:100%;    
-    
+
+/* Style for the image */
+.first img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px; /* Rounded corners for the image */
+    object-fit: cover;
 }
-.container p{
-    color:black;
-    background-color: white;
-    
+
+/* Style for the text */
+.second p {
+    margin: 20px 0; /* Spacing above and below the text */
+    font-size: 16px;
+    color: #333; /* Dark gray text */
+    line-height: 1; /* Improve readability */
+}
+
+/* Style for the button */
+.button button {
+    margin-bottom: 8px;
+    padding: 12px 30px; /* Slightly larger padding for oval shape */
+    font-size: 16px;
+    color: #fff; /* White text */
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 25px; /* Oval shape (large border-radius) */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    position: relative; /* Required for 3D effect */
+    box-shadow: 0 4px 0 #0056b3; /* Darker blue shadow for 3D effect */
+}
+
+/* Button hover effect */
+.button button:hover {
+    background-color: rgba(0, 123, 255, 0.9); /* Slightly transparent blue */
+    box-shadow: 0 6px 0 #0056b3; /* Increase shadow for 3D effect */
+    transform: translateY(-2px); /* Move button up slightly for 3D effect */
+}
+
+/* Button active effect (when clicked) */
+.button button:active {
+    background-color: rgba(0, 123, 255, 0.8); /* More transparent blue */
+    box-shadow: 0 2px 0 #0056b3; /* Reduce shadow size for pressed effect */
+    transform: translateY(2px); /* Move button down slightly */
+}
+.pagelink button {
+    padding: 10px 30px; /* Larger padding */
+    font-size: 16px;
+    color: #fff; /* White text */
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 25px; /* Oval shape */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 0 #0056b3; /* Darker blue shadow for 3D effect */
+}
+
+/* "Show more" button hover effect */
+.pagelink button:hover {
+    background-color: rgba(0, 123, 255, 0.9); /* Slightly transparent blue */
+    box-shadow: 0 6px 0 #0056b3; /* Increase shadow for 3D effect */
+    transform: translateY(-2px); /* Move button up slightly */
+}
+
+/* "Show more" button active effect (when clicked) */
+.pagelink button:active {
+    background-color: rgba(0, 123, 255, 0.8); /* More transparent blue */
+    box-shadow: 0 2px 0 #0056b3; /* Reduce shadow size for pressed effect */
+    transform: translateY(2px); /* Move button down slightly */
 }
