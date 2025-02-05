@@ -117,7 +117,9 @@
 
 /* Style for each box (ktm and pokhara) */
 .ktm, .pokhara {
-    flex: 1; /* Equal width for both boxes */
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
     background-color: #e3e1e1; /* White background */
     border-radius: 20px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -125,13 +127,16 @@
     text-align: center; /* Center text and button */
     padding: 1px;
     max-width: 400px;
-    max-height:fit-content;
+    height: 505px;
+    
 }
-
+.contain p{
+    text-align: justify;
+}
 /* Style for the image */
 .first img {
     width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
+    height: 250px; /* Maintain aspect ratio */
     border-radius: 20px; /* Rounded corners for the image */
     object-fit: cover;
 }
@@ -140,6 +145,7 @@
 .second p {
     margin: 20px 0; /* Spacing above and below the text */
     font-size: 16px;
+    
     color: #333; /* Dark gray text */
     line-height: 1; /* Improve readability */
 }
