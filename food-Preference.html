@@ -3,50 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yatra-Z</title>
-    <link rel="stylesheet" href="/assets/css/explorationCss.css">
+    <link rel="stylesheet" href="/assets/css/food_preference.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="wrapper">
-       <div class="container">
-            <div class="contain">
-
-                <div class="ktm">
-                    <div class="first">
-                        <img src="/assets/images/annapurna-fishtail-hiunchuli-nature.jpg" alt="pokhara">
-                    </div>
-                    <div class="second">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quaerat aliquid iste autem expedita nam! Id, perferendis quod, explicabo non quae molestias magni vero temporibus earum illum consequuntur cumque assumenda.</p>
-                    </div>
-                    <div class="button">
-                        <button type="button"><a href="/kathmandu.html"> explore</a></button>
-                    </div>
-                </div>
-            </div>
-            <div class="contain">
-
-                <div class="pokhara">
-                    <div class="first">
-                        <img src="/assets/images/annapurna-fishtail-hiunchuli-nature.jpg" alt="pokhara">
-                    </div>
-                    <div class="second">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quaerat aliquid iste autem expedita nam! Id, perferendis quod, explicabo non quae molestias magni vero temporibus earum illum consequuntur cumque assumenda.</p>
-                    </div>
-                    <div class="button">
-                        <a href="/pokhara.html"><button type="button"> explore</button></a>
-                    </div>
-                </div>
-            </div>
+    <script src="/assets/js/script.js"></script>
+    <header>
+        <h2>Food Preference</h2>
+    </header>
+    
+    <div class="container">
+        <div class="category">
+            <h3>Standard Choice</h3>
+            <label><input type="checkbox" checked> Vegetarian 🌱</label>
+            <label><input type="checkbox" checked> Non-Vegetarian 🍗</label>
+            <label><input type="checkbox" checked> Vegan 🌿</label>
+            <label><input type="checkbox" checked> Eggatarian 🥚</label>
         </div>
-            <div class="pagelink">
-        <button type="button">
-           <a href="/index.html"> Back </a>
-        </button>
-       </div>
+        <div class="category">
+            <h3>Special Dietary</h3>
+            <label><input type="checkbox" checked> Gluten-Free 🚫🍞</label>
+            <label><input type="checkbox" checked> Lactose-Free 🚫🥛</label>
+            <label><input type="checkbox" checked> Nut-Free 🚫🥜</label>
+            <label><input type="checkbox" checked> Sugar-Free 🚫🍬</label>
+        </div>
+        <div class="category">
+            <h3>Regional and Cultural Preference</h3>
+            <label><input type="checkbox" checked> Halal 🕌</label>
+            <label><input type="checkbox" checked> Kosher ✡️</label>
+            <label><input type="checkbox" checked> Jain Food 🚫🥕</label>
+        </div>
     </div>
-
-
-
+    <button onclick="submitPreferences()">Done</button>
+    
     <footer>
         <div class="footerPart">
             <div class="footer-div">
@@ -96,13 +85,11 @@
                         <div class="links">
                             <img src="/assets/images/icons8-twitter-50.png" alt="twitter" class="image">
                     <a href="#">Twitter.com</a>
-                </div>        
-                </div>
+                        </div>        
+            </div>
     
         </div>
         
     </footer>
-            
-    
 </body>
 </html>

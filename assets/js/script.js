@@ -10,3 +10,12 @@ function calculateCost() {
         costEstimate.textContent = "Please enter trip duration";
     }
 }
+
+
+function submitPreferences() {
+    let selectedPreferences = [];
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedPreferences.push(checkbox.parentElement.textContent.trim());
+    });
+    alert("Selected Preferences: " + selectedPreferences.join(", "));
+}
