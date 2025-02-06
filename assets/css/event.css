@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .calendar {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .days, .dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .days div {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .dates div {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .dates div.event {
+    background-color: #ffeb3b;
+    font-weight: bold;
+  }
+  
+  .notification {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4caf50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+  }
