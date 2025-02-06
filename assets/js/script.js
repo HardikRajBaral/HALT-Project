@@ -43,98 +43,125 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-const events = {
-    "2025-02-19": "Maha Shivaratri",
-    "2025-03-08": "Holi",
-    "2025-04-14": "Nepali New Year",
-    "2025-05-01": "May Day",
-    "2025-08-19": "Raksha Bandhan",
-    "2025-09-06": "Krishna Janmashtami",
-    "2025-10-02": "Ghatasthapana",
-    "2025-10-10": "Dashain (Phulpati)",
-    "2025-10-11": "Dashain (Maha Ashtami)",
-    "2025-10-12": "Dashain (Maha Navami)",
-    "2025-10-13": "Dashain (Bijaya Dashami)",
-    "2025-10-15": "Kojagrat Purnima",
-    "2025-11-01": "Laxmi Puja",
-    "2025-11-02": "Bhai Tika",
-    "2025-11-15": "Chhath Puja"
-};
+    const events = {
+        "2025-02-19": "Maha Shivaratri",
+        "2025-03-08": "Holi",
+        "2025-04-14": "Nepali New Year",
+        "2025-05-01": "May Day",
+        "2025-08-19": "Raksha Bandhan",
+        "2025-09-06": "Krishna Janmashtami",
+        "2025-10-02": "Ghatasthapana",
+        "2025-10-10": "Dashain (Phulpati)",
+        "2025-10-11": "Dashain (Maha Ashtami)",
+        "2025-10-12": "Dashain (Maha Navami)",
+        "2025-10-13": "Dashain (Bijaya Dashami)",
+        "2025-10-15": "Kojagrat Purnima",
+        "2025-11-01": "Laxmi Puja",
+        "2025-11-02": "Bhai Tika",
+        "2025-11-15": "Chhath Puja"
+    };
 
-let currentDate = new Date();
+    let currentDate = new Date();
+    let displayedDate = new Date(currentDate); // Variable to store the currently displayed date
 
-function generateCalendar(date) {
-    const calendarDiv = document.getElementById("calendar");
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
-    // Update month label
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    document.getElementById("monthLabel").textContent = `${monthNames[month]} ${year}`;
+    function generateCalendar(date) {
+        const calendarDiv = document.getElementById("calendar");
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Update month label
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.getElementById("monthLabel").textContent = `${monthNames[month]} ${year}`;
 
-    // Clear previous calendar
-    calendarDiv.innerHTML = "";
+        // Clear previous calendar
+        calendarDiv.innerHTML = "";
 
-    // Create empty cells for the days before the first day of the month
-    for (let i = 0; i < firstDay; i++) {
-        const emptyDiv = document.createElement("div");
-        calendarDiv.appendChild(emptyDiv);
-    }
-
-    // Get today's date
-    const todayStr = new Date().toISOString().split('T')[0];
-
-    // Create the day cells
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayDiv = document.createElement("div");
-        dayDiv.classList.add("day");
-        dayDiv.textContent = day;
-
-        // Check if the day is today
-        if (dateStr === todayStr) {
-            dayDiv.classList.add("today");
+        // Create empty cells for the days before the first day of the month
+        for (let i = 0; i < firstDay; i++) {
+            const emptyDiv = document.createElement("div");
+            calendarDiv.appendChild(emptyDiv);
         }
 
-        // Check if the day has an event
-        if (events[dateStr]) {
-            dayDiv.classList.add("event");
-            dayDiv.onclick = () => showPopup(events[dateStr]);
+        // Get today's date
+        const todayStr = new Date().toISOString().split('T')[0];
+
+        // Create the day cells
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dayDiv = document.createElement("div");
+            dayDiv.classList.add("day");
+            dayDiv.textContent = day;
+
+            // Check if the day is today
+            if (dateStr === todayStr) {
+                dayDiv.classList.add("today");
+            }
+
+            // Check if the day has an event
+            if (events[dateStr]) {
+                dayDiv.classList.add("event");
+                dayDiv.onclick = () => showPopup(events[dateStr]);
+            }
+
+            // Add the day to the calendar
+            calendarDiv.appendChild(dayDiv);
         }
 
-        // Add the day to the calendar
-        calendarDiv.appendChild(dayDiv);
+        checkUpcomingEvents();
     }
 
-    checkUpcomingEvents();
-}
-
-function showPopup(eventName) {
-    const popup = document.getElementById("popup");
-    popup.textContent = `Event: ${eventName}`;
-    popup.style.display = "block";
-    setTimeout(() => { popup.style.display = "none"; }, 3000);
-}
-
-function checkUpcomingEvents() {
-    const todayStr = new Date().toISOString().split('T')[0];
-    if (events[todayStr]) {
-        showPopup(events[todayStr]);
+    function showPopup(eventName) {
+        const popup = document.getElementById("popup");
+        popup.textContent = `Event: ${eventName}`;
+        popup.style.display = "block";
+        setTimeout(() => { popup.style.display = "none"; }, 3000);
     }
-}
 
-// Event listeners for next and previous month buttons
-document.getElementById("prevMonth").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    generateCalendar(currentDate);
-});
+    function checkUpcomingEvents() {
+        const todayStr = new Date().toISOString().split('T')[0];
+        if (events[todayStr]) {
+            showPopup(events[todayStr]);
+        }
+    }
 
-document.getElementById("nextMonth").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    generateCalendar(currentDate);
-});
+    // Event listeners for next and previous month buttons
+    document.getElementById("prevMonth").addEventListener("click", () => {
+        displayedDate.setMonth(displayedDate.getMonth() - 1);
+        generateCalendar(displayedDate);
+    });
 
-// Generate calendar for the current month on page load
-generateCalendar(currentDate);
+    document.getElementById("nextMonth").addEventListener("click", () => {
+        displayedDate.setMonth(displayedDate.getMonth() + 1);
+        generateCalendar(displayedDate);
+    });
+
+    // Event listener for next event button
+    document.getElementById("nextEventButton").addEventListener("click", () => {
+        let nextEventDate = getNextEventDate();
+        if (nextEventDate) {
+            displayedDate = new Date(nextEventDate); // Set the calendar to the date of the next event
+            generateCalendar(displayedDate);
+        }
+    });
+
+    // Event listener for back button
+    document.getElementById("backButton").addEventListener("click", () => {
+        window.location.href = 'main.html'; // Replace with the actual link to your main page
+    });
+
+    // Function to get the next event date
+    function getNextEventDate() {
+        const today = new Date();
+        const upcomingEvents = Object.keys(events).filter(date => new Date(date) > today);
+        
+        if (upcomingEvents.length > 0) {
+            const nextEventDate = upcomingEvents.sort()[0]; // Get the next closest event date
+            return nextEventDate; // Return the next event's date
+        }
+        return null; // No upcoming events
+    }
+
+    // Generate calendar for the current month on page load
+    generateCalendar(displayedDate);
