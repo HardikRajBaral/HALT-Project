@@ -42,90 +42,99 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-const datesContainer = document.getElementById('dates');
-const currentMonthYear = document.getElementById('currentMonthYear');
-const prevMonthButton = document.getElementById('prevMonth');
-const nextMonthButton = document.getElementById('nextMonth');
-const notification = document.getElementById('notification');
-const notificationText = document.getElementById('notificationText');
-const closeNotification = document.getElementById('closeNotification');
 
-let currentDate = new Date();
-let currentMonth = currentDate.getMonth();
-let currentYear = currentDate.getFullYear();
-
-// Nepali Events (Example: Event Name -> English Date)
-const nepaliEvents = {
-  '2025-01-15': 'Maghe Sankranti',
-  '2025-02-19': 'Sonam Lhosar',
-  '2025-03-08': 'International Women\'s Day',
-  '2025-04-14': 'Nepali New Year',
-  '2025-05-01': 'Labour Day',
-  '2025-09-28': 'Indra Jatra',
-  '2025-10-17': 'Dashain',
-  '2025-11-12': 'Tihar',
+const events = {
+    "2025-02-19": "Maha Shivaratri",
+    "2025-03-08": "Holi",
+    "2025-04-14": "Nepali New Year",
+    "2025-05-01": "May Day",
+    "2025-08-19": "Raksha Bandhan",
+    "2025-09-06": "Krishna Janmashtami",
+    "2025-10-02": "Ghatasthapana",
+    "2025-10-10": "Dashain (Phulpati)",
+    "2025-10-11": "Dashain (Maha Ashtami)",
+    "2025-10-12": "Dashain (Maha Navami)",
+    "2025-10-13": "Dashain (Bijaya Dashami)",
+    "2025-10-15": "Kojagrat Purnima",
+    "2025-11-01": "Laxmi Puja",
+    "2025-11-02": "Bhai Tika",
+    "2025-11-15": "Chhath Puja"
 };
 
-// Render Calendar
-function renderCalendar(month, year) {
-  datesContainer.innerHTML = '';
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+let currentDate = new Date();
 
-  currentMonthYear.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+function generateCalendar(date) {
+    const calendarDiv = document.getElementById("calendar");
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    // Update month label
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById("monthLabel").textContent = `${monthNames[month]} ${year}`;
 
-  // Fill empty days
-  for (let i = 0; i < firstDay; i++) {
-    datesContainer.appendChild(document.createElement('div'));
-  }
+    // Clear previous calendar
+    calendarDiv.innerHTML = "";
 
-  // Fill days
-  for (let i = 1; i <= daysInMonth; i++) {
-    const date = new Date(year, month, i);
-    const dateString = date.toISOString().split('T')[0];
-    const dayElement = document.createElement('div');
-    dayElement.textContent = i;
-
-    if (nepaliEvents[dateString]) {
-      dayElement.classList.add('event');
-      dayElement.title = nepaliEvents[dateString];
-      dayElement.addEventListener('click', () => showNotification(nepaliEvents[dateString]));
+    // Create empty cells for the days before the first day of the month
+    for (let i = 0; i < firstDay; i++) {
+        const emptyDiv = document.createElement("div");
+        calendarDiv.appendChild(emptyDiv);
     }
 
-    datesContainer.appendChild(dayElement);
-  }
+    // Get today's date
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    // Create the day cells
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("day");
+        dayDiv.textContent = day;
+
+        // Check if the day is today
+        if (dateStr === todayStr) {
+            dayDiv.classList.add("today");
+        }
+
+        // Check if the day has an event
+        if (events[dateStr]) {
+            dayDiv.classList.add("event");
+            dayDiv.onclick = () => showPopup(events[dateStr]);
+        }
+
+        // Add the day to the calendar
+        calendarDiv.appendChild(dayDiv);
+    }
+
+    checkUpcomingEvents();
 }
 
-// Show Notification
-function showNotification(eventName) {
-  notificationText.textContent = `Today's Event: ${eventName}`;
-  notification.style.display = 'block';
+function showPopup(eventName) {
+    const popup = document.getElementById("popup");
+    popup.textContent = `Event: ${eventName}`;
+    popup.style.display = "block";
+    setTimeout(() => { popup.style.display = "none"; }, 3000);
 }
 
-// Close Notification
-closeNotification.addEventListener('click', () => {
-  notification.style.display = 'none';
+function checkUpcomingEvents() {
+    const todayStr = new Date().toISOString().split('T')[0];
+    if (events[todayStr]) {
+        showPopup(events[todayStr]);
+    }
+}
+
+// Event listeners for next and previous month buttons
+document.getElementById("prevMonth").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    generateCalendar(currentDate);
 });
 
-// Previous Month
-prevMonthButton.addEventListener('click', () => {
-  currentMonth--;
-  if (currentMonth < 0) {
-    currentMonth = 11;
-    currentYear--;
-  }
-  renderCalendar(currentMonth, currentYear);
+document.getElementById("nextMonth").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    generateCalendar(currentDate);
 });
 
-// Next Month
-nextMonthButton.addEventListener('click', () => {
-  currentMonth++;
-  if (currentMonth > 11) {
-    currentMonth = 0;
-    currentYear++;
-  }
-  renderCalendar(currentMonth, currentYear);
-});
-
-// Initial Render
-renderCalendar(currentMonth, currentYear);
+// Generate calendar for the current month on page load
+generateCalendar(currentDate);

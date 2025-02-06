@@ -1,3 +1,9 @@
+
+
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -9,14 +15,11 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-    back
+    
   
     
   }
-  *{
-    text-decoration: none;
-    box-sizing: border-box;
-  }
+
   .navbar{
     background-color: #424242;
     color: aliceblue;
